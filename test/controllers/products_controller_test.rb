@@ -8,7 +8,8 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
   test "should get index" do
     get products_url
-    assert_response :success
+    assert_select 'tfoot a', 'New Product'
+    assert_select 'tbody tr', 3
   end
 
   test "should get new" do
@@ -53,4 +54,5 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to products_url
   end
+
 end
