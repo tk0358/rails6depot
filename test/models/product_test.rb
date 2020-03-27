@@ -17,12 +17,12 @@ class ProductTest < ActiveSupport::TestCase
                           image_url: "zzz.jpg")
     product.price = -1
     assert product.invalid?
-    assert_equal [ "must be greater than or equal to 0.01"],
+    assert_equal [ "must be 1 cent or more"],
       product.errors[:price]
 
     product.price = 0
     assert product.invalid?
-    assert_equal [ "must be greater than or equal to 0.01"],
+    assert_equal [ "must be 1 cent or more"],
       product.errors[:price]
     
     product.price = 1
