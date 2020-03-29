@@ -4,6 +4,9 @@
 
 .store {
   max-width: 80em;
+  .counter {
+    float: right;
+  }
   ul.catalog {
     border-top: solid 0.250em;
     list-style: none;
