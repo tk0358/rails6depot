@@ -2,6 +2,7 @@ class LineItemsController < ApplicationController
   include CurrentCart
   before_action :set_cart, only: [:create]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_item
 
   # GET /line_items
   # GET /line_items.json
@@ -74,5 +75,10 @@ class LineItemsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def line_item_params
       params.require(:line_item).permit(:product_id)
+    end
+
+    def invalid_item
+      logger.error "Attempt to access invalid item #{params[:id]}"
+      redirect_to store_index_url, notice: 'Invalid item'
     end
 end
