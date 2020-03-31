@@ -42,4 +42,14 @@
     input[type="submit"]:hover {
         background-color: #992;
     }
+    .remove {
+        a {
+            background-color: red;
+            color: white;
+            border-radius: 3px;
+            text-decoration: none;
+            padding: 2px;
+            border: 1px solid black;
+        }
+    }
 }
