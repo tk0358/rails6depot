@@ -2,7 +2,8 @@ require 'test_helper'
 
 class CartsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @cart = carts(:one)
+    get store_index_path
+    @cart = Cart.find(session[:cart_id])
   end
 
   test "should get index" do
