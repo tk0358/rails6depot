@@ -63,6 +63,7 @@ class LineItemsController < ApplicationController
     @line_item.destroy
     respond_to do |format|
       format.html { redirect_to store_index_url }
+      format.js { @id = @line_item.id }
       format.json { head :no_content }
     end
   end

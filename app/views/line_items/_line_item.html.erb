@@ -1,10 +1,10 @@
 <% if line_item == @current_item %>
-<tr class="line-item-highlight">
+<tr class="line-item-highlight" id="line-item-<%= line_item.id %>">
 <% else %>
-<tr>
+<tr id="line-item-<%= line_item.id %>">
 <% end %>
   <td class="quantity"><%= line_item.quantity %></td>
   <td><%= line_item.product.title %></td>
   <td class="price"><%= number_to_currency(line_item.total_price) %></td>
-  <td class="remove"><%= link_to "×", line_item_path(line_item), method: :delete %></td>
+  <td class="remove"><%= link_to "×", line_item_path(line_item), method: :delete, remote: true %></td>
 </tr>
