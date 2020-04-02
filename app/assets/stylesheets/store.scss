@@ -24,6 +24,12 @@
         content: " ";
         display: block;
       }
+
+      // when recieve the product's information change with ActionCable, highlight the element
+      &.product-highlight {
+        animation: product-highlight 1s;
+      }
+
       img {
         float: left;
         padding: 1em;
@@ -51,3 +57,15 @@
     }
   }
 }
+
+@keyframes product-highlight {
+  0% {
+      background: #A5FF14;
+  }
+
+  100% {
+      background: none;
+  }
+}
+
+

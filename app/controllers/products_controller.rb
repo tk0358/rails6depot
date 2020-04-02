@@ -51,6 +51,7 @@ class ProductsController < ApplicationController
 
         set_counter
         @products = Product.all.order(:title)
+        @current_product = @product
         ActionCable.server.broadcast 'products',
           html: render_to_string('store/index', layout: false)
       else
