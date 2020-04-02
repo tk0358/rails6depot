@@ -1,7 +1,7 @@
 class LineItemsController < ApplicationController
   include CurrentCart
-  before_action :set_cart, only: [:create]
-  before_action :set_line_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_cart, only: [:create, :destroy, :decrement]
+  before_action :set_line_item, only: [:show, :edit, :update, :destroy, :decrement]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_item
 
   # GET /line_items
@@ -63,8 +63,24 @@ class LineItemsController < ApplicationController
     @line_item.destroy
     respond_to do |format|
       format.html { redirect_to store_index_url }
-      format.js { @id = @line_item.id }
+      format.js { }
       format.json { head :no_content }
+    end
+  end
+
+  # POST /line_items/1/decrement
+  def decrement
+    respond_to do |format|
+      if @line_item.quantity > 1
+        @line_item.quantity -= 1
+        @line_item.save
+        format.html { redirect_to store_index_url }
+        format.js 
+      else
+        @line_item.destroy
+        format.html { redirect_to store_index_url }
+        format.js 
+      end
     end
   end
 
