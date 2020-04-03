@@ -77,6 +77,13 @@ class ProductsController < ApplicationController
     if stale?(@latest_order)
       respond_to do |format|
         format.atom
+        format.html
+        format.json { 
+          render json: {
+            items: @latest_order.line_items , 
+            order_info: @latest_order
+          }
+         }
       end
     end
   end
