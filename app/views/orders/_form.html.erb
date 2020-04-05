@@ -26,12 +26,7 @@
     <%= form.text_field :email, seize: 40 %>
   </div>
 
-  <div class="field">
-    <%= form.label :pay_id %>
-    <%= form.select :pay_id,
-                     [['Check', 1],['Credit card', 2], ['Purchase order', 3]],
-                    prompt: 'Select a payment method' %>
-  </div>
+  <div id="pay-type-component"></div>
 
   <div class="actions">
     <%= form.submit 'Place Order' %>
