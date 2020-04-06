@@ -17,9 +17,9 @@ class PayTypeSelector extends React.Component {
   render() {
     let PayTypeCustomComponent = NoPayType;
     if (this.state.selectedPayType == "1") {
-      PayTypeCustomComponent = CreditCardPayType;
-    } else if (this.state.selectedPayType == "2") {
       PayTypeCustomComponent = CheckPayType;
+    } else if (this.state.selectedPayType == "2") {
+      PayTypeCustomComponent = CreditCardPayType;
     } else if (this.state.selectedPayType == "3") {
       PayTypeCustomComponent = PurchaseOrderPayType;
     }
@@ -27,7 +27,11 @@ class PayTypeSelector extends React.Component {
       <div>
         <div className="field">
           <label htmlFor="order_pay_id">Pay type</label>
-          <select onChange={this.onPayTypeSelected} name="order[pay_id]">
+          <select
+            id="order_pay_id"
+            onChange={this.onPayTypeSelected}
+            name="order[pay_id]"
+          >
             <option value="">Select a payment method</option>
             <option value="1">Check</option>
             <option value="2">Credit card</option>

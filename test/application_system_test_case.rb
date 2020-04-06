@@ -1,8 +1,6 @@
 require "test_helper"
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
-  driven_by :selenium, using: :headless_chrome, screen_size: [1400, 1400] do |driver_option|
-    driver_option.add_argument('--no-sandbox')
-    driver_option.add_argument('disable-features=VizDisplayCompositor')
-  end
+  Selenium::WebDriver::Chrome.driver_path = "/mnt/c/Program Files/chromedriver_win32/chromedriver.exe"
+  driven_by :selenium, using: :chrome, screen_size: [1400, 1400]
 end
