@@ -3,7 +3,7 @@ class Order < ApplicationRecord
   belongs_to :pay
 
   validates :name, :address, :email, presence: true
-  validates :pay_id, inclusion: { in: [1, 2, 3]}
+  validates :pay_id, inclusion: Pay.all.ids
 
   def add_line_items_from_cart(cart)
     cart.line_items.each do |item|
