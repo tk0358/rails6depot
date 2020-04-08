@@ -4,3 +4,6 @@ one:
 two:
   id: 2
   way: Credit card
+three:
+  id: 3
+  way: Purchase order
