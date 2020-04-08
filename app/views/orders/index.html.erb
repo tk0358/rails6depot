@@ -9,7 +9,7 @@
       <th>Address</th>
       <th>Email</th>
       <th>Pay type</th>
-      <th colspan="3"></th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
@@ -20,6 +20,11 @@
         <td><%= order.address %></td>
         <td><%= order.email %></td>
         <td><%= order.pay.way %></td>
+        <% if order.ship_date %>
+        <td>done</td>
+        <% else %>
+        <td><%= link_to 'Ship', ship_order_path(order), method: :post %></td>
+        <% end %>
         <td><%= link_to 'Show', order %></td>
         <td><%= link_to 'Edit', edit_order_path(order) %></td>
         <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>

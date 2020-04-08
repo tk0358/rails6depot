@@ -5,6 +5,7 @@ class Order < ApplicationRecord
   belongs_to :pay
   validates :name, :address, :email, presence: true
   validates :pay_id, inclusion: { in: [1, 2, 3], message: "%{value} is invalid"}
+  validate :ship_date_must_be_after_created_at
 
   def add_line_items_from_cart(cart)
     cart.line_items.each do |item|
@@ -43,6 +44,12 @@ class Order < ApplicationRecord
       OrderMailer.received(self).deliver_later
     else
       raise payment_result.error
+    end
+  end
+
+  def ship_date_must_be_after_created_at
+    if ship_date.present? && ship_date < created_at
+      errors.add(:ship_date, "ship date must be after created_at")
     end
   end
 end
