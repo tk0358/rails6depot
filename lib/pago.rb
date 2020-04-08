@@ -13,6 +13,11 @@ class Pago
         payment_details.fetch(:cc_num).to_s + "/" +
         payment_details.fetch(:expiration_month).to_s + "/" +
         payment_details.fetch(:expiration_year).to_s
+      cc_digits = payment_details.fetch(:cc_num).to_s.length
+      if cc_digits < 14 || cc_digits > 16
+        Rails.logger.error "Your number is #{payment_details.fetch(:cc_num)}. The number of digits in your credit card is wrong."
+        return OpenStruct.new(succeeded?: false, error: 'The number of digits in your credit card is wrong.')
+      end
     when :po
       Rails.logger.info "Processing purchase order: " +
         payment_details.fetch(:po_num).to_s
