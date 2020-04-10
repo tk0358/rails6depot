@@ -3,6 +3,7 @@
 one:
   product: two
   cart: one
+  quantity: 2
 
 two:
   product: ruby

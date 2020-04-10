@@ -1,5 +1,5 @@
 require "application_system_test_case"
-# 17 assertions
+# 33 assertions
 class OrdersTest < ApplicationSystemTestCase
   include ActiveJob::TestHelper
 
@@ -102,7 +102,64 @@ class OrdersTest < ApplicationSystemTestCase
     assert_selector '#order_po_number'
   end
 
+  test "ship the order" do
+    
+    visit orders_url
 
+    perform_enqueued_jobs do
+      click_on 'Ship', match: :first
+    end
 
+    mail = ActionMailer::Base.deliveries.last
+    assert_equal 'Ruru <ruru@example.com>', mail[:from].value
+    assert_equal 'Pragmatic Store Order Shipped', mail.subject
+
+    assert_text 'done'
+  end
+
+  test "credit card number is short" do
+    LineItem.delete_all
+    Order.delete_all
+
+    visit store_index_url
+
+    click_on 'Add to Cart', match: :first
+
+    click_on 'Checkout'
+
+    fill_in 'order_name', with: 'Ruru Kaseda'
+    fill_in 'order_address', with: '123 Main Street'
+    fill_in 'order_email', with: 'ruru@example.com'
+
+    assert_no_selector '#order_credit_card_number'
+
+    select 'Credit card', from: 'Pay type'
+
+    assert_selector '#order_credit_card_number'
+
+    fill_in 'CC #', with: '123456'
+    fill_in 'Expiry', with: '11/22'
+
+    perform_enqueued_jobs do
+      click_button 'Place Order'
+    end
+
+    orders = Order.all
+    assert_equal 1, orders.size
+
+    order = orders.first
+
+    assert_equal 'Ruru Kaseda', order.name
+    assert_equal '123 Main Street', order.address
+    assert_equal 'ruru@example.com', order.email
+    assert_equal 'Credit card', order.pay.way
+    assert_equal 1, order.line_items.size
+
+    mail = ActionMailer::Base.deliveries.last
+    assert_equal [order.email], mail.to
+    assert_equal 'Ruru <ruru@example.com>', mail[:from].value
+    assert_equal 'Payment processing is failed', mail.subject
+    assert_match /The number of digits in your credit card is wrong/, mail.body.encoded
+  end
 
 end

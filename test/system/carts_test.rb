@@ -1,7 +1,10 @@
 require "application_system_test_case"
-# 6 assertions
+# 11 assertions
+# mailは2タイプで送信されるので、メール本文のassertionは×2される
 
 class CartsTest < ApplicationSystemTestCase
+  include ActiveJob::TestHelper
+
   setup do
     @cart = carts(:one)
   end
@@ -38,5 +41,20 @@ class CartsTest < ApplicationSystemTestCase
     end
 
     assert_no_selector "h2", text: "Your Cart"
+  end
+
+  test "send_notification_mail_in_invalid_cart_ access" do
+    perform_enqueued_jobs do
+      visit 'carts/invalid'
+    end
+
+    mail = ActionMailer::Base.deliveries.last
+
+    assert_equal ["tk0358a@yahoo.co.jp"], mail.to
+    assert_equal 'Auto message<do-not-reply@example.com>', mail[:from].value
+    assert_equal 'Someone has accessed invalid url', mail.subject
+
+    # htmlメール、textメールの2回assert_match行われる
+    assert_match /invalid/, mail.body.encoded 
   end
 end
