@@ -1,6 +1,7 @@
 require "application_system_test_case"
 # 4 assertions
 class ProductsTest < ApplicationSystemTestCase
+  include AuthenticationHelpers
   setup do
     @product = products(:one)
   end

@@ -23,5 +23,4 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     delete logout_url
     assert_redirected_to store_index_url
   end
-
 end

@@ -3,6 +3,7 @@ require "application_system_test_case"
 # mailは2タイプで送信されるので、メール本文のassertionは×2される
 
 class CartsTest < ApplicationSystemTestCase
+  include AuthenticationHelpers
   include ActiveJob::TestHelper
 
   setup do

@@ -1,6 +1,7 @@
 require "application_system_test_case"
 # 33 assertions
 class OrdersTest < ApplicationSystemTestCase
+  include AuthenticationHelpers
   include ActiveJob::TestHelper
 
   setup do

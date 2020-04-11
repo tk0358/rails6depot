@@ -1,6 +1,7 @@
 require "application_system_test_case"
 # 1asserton
 class LineItemsTest < ApplicationSystemTestCase
+  include AuthenticationHelpers
 
   test "new line item should be highlighted" do
     visit store_index_url

@@ -1,6 +1,7 @@
 require "application_system_test_case"
 
 class UsersTest < ApplicationSystemTestCase
+  include AuthenticationHelpers
   setup do
     @user = users(:one)
   end
@@ -14,13 +15,13 @@ class UsersTest < ApplicationSystemTestCase
     visit users_url
     click_on "New User"
 
-    fill_in "Name", with: @user.name
-    fill_in "Password", with: 'secret'
-    fill_in "Password confirmation", with: 'secret'
+    fill_in "Name:", with: "new user"
+    fill_in "Password:", with: 'secret'
+    fill_in "Confirm:", with: 'secret'
     click_on "Create User"
 
-    assert_text "User was successfully created"
-    click_on "Back"
+    assert_text "User new user was successfully created"
+    assert_selector "h1", text: "Users"
   end
 
   test "updating a User" do
@@ -34,7 +35,7 @@ class UsersTest < ApplicationSystemTestCase
     click_on "Update User"
 
     assert_text "User #{@user.name} was successfully updated"
-    assert_text 'Users'
+    assert_selector "h1", text: "Users"
   end
 
   test "destroying a User" do
