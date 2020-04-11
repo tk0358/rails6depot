@@ -28,12 +28,13 @@ class UsersTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Name", with: @user.name
-    fill_in "Password", with: 'secret'
-    fill_in "Password confirmation", with: 'secret'
+    fill_in "Current password:", with: 'secret'
+    fill_in "New password:", with: 'password'
+    fill_in "Confirm:", with: 'password'
     click_on "Update User"
 
-    assert_text "User was successfully updated"
-    click_on "Back"
+    assert_text "User #{@user.name} was successfully updated"
+    assert_text 'Users'
   end
 
   test "destroying a User" do
@@ -42,6 +43,6 @@ class UsersTest < ApplicationSystemTestCase
       click_on "Destroy", match: :first
     end
 
-    assert_text "User was successfully destroyed"
+    assert_text 'Please Log In'
   end
 end
