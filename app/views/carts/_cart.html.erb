@@ -10,7 +10,7 @@
     <tfoot>
       <tr>
         <th colspan="2">Total: </th>
-        <th class="price"><%= number_to_currency(cart.total_price) %></td>
+        <th class="price"><%= number_to_currency(calculate_locale_price(I18n.locale, cart.total_price)) %></td>
       </tr>
     </tfoot>
   </table>

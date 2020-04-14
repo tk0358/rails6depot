@@ -28,7 +28,7 @@
             <%= sanitize(product.description) %>
           </p>
           <div class="price">
-            <%= number_to_currency(product.price) %>
+            <%= number_to_currency(calculate_locale_price(I18n.locale, product.price)) %>
             <%= button_to t('.add_html'), line_items_path(product_id: product.id, locale: I18n.locale), remote: true %>
           </div>
         </li>
@@ -36,3 +36,4 @@
     <% end %>
   <% end %>
 </ul>
+<%= I18n.locale %>

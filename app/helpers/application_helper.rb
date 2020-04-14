@@ -13,4 +13,14 @@ module ApplicationHelper
       end
     end
   end
+
+  def calculate_locale_price(locale, price)
+    if locale == :en
+      return price
+    elsif locale == :es
+      return price * 0.9
+    elsif locale == :ja
+      return (price * 100).to_i
+    end
+  end
 end

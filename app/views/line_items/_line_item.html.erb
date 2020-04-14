@@ -5,7 +5,7 @@
 <% end %>
   <td class="quantity"><%= line_item.quantity %></td>
   <td><%= line_item.product.title %></td>
-  <td class="price"><%= number_to_currency(line_item.total_price) %></td>
+  <td class="price"><%= number_to_currency(calculate_locale_price(I18n.locale, line_item.total_price)) %></td>
   <%# not rendering in mailer view  %>
   <% if @current_item %>
     <td class="decrement"><%= link_to "−", decrement_line_item_path(line_item.id), method: :post, remote: true %></td>

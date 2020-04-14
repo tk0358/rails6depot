@@ -40,6 +40,7 @@ ja:
     index:
       title_html: "あなたの本棚"
       add_html: "カートに追加"
+      product_price: "￥%{price}"
   products:
     index:
       products: "日本の商品"
@@ -76,7 +77,7 @@ ja:
         unit: "￥"
         precision: 0
         separator: ","
-        format: "%u&nbsp;%n00"
+        format: "%u&nbsp;%n"
   # activerecord:
   #   models:
   #     product:
