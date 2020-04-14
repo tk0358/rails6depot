@@ -62,4 +62,10 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to products_url
   end
 
+  test "cannnot access products_path without login" do
+    logout
+    get products_url
+    assert_redirected_to login_url
+  end
+
 end

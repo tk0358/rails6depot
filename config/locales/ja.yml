@@ -1,7 +1,79 @@
 ja:
+  activerecord:
+    errors:
+      messages:
+        inclusion: は一覧にありません
+        blank: を入力してください
+        required: を入力してください
+    models:
+      order: "注文"
+      pay: "支払い"
+    attributes:
+      order:
+        address: "住所"
+        name: "名前"
+        email: "E-mail"
+        pay_id: "支払い"
+        pay: "支払い"
+  errors:
+    messages:
+      invalid: は不正な値です
+      model_invalid: "バリデーションに失敗しました: %{errors}"
+      inclusion: は一覧にありません
+    template:
+      body: 次の項目を確認してください
+      header:
+        one: "%{model}にエラーが発生しました"
+        other: "%{model}に%{count}個のエラーが発生しました"
+  thanks: "ご注文ありがとうございました"
   time:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
+  layouts:
+    application:
+      title: "実用本棚"
+      home: "ホーム"
+      questions: "質問"
+      news: "ニュース"
+      contact: "連絡先"
+  store:
+    index:
+      title_html: "あなたの本棚"
+      add_html: "カートに追加"
+  carts:
+    cart:
+      title: "あなたのカート"
+      empty: "カートを空に"
+      checkout: "注文"
+  orders:
+    new:
+      legend: "詳細を入力してください"
+    form:
+      name: "名前"
+      address_html: "住所"
+      email: "E-mail"
+      pay_type: "支払い方法"
+      pay_prompt_html: "支払い方法を選んで下さい"
+      submit: "注文する"
+      pay_types:
+        check: "小切手"
+        credit_card: "クレジットカード"
+        purchase_order: "注文書"
+      check_pay_type:
+        routing_number: "ルーティング番号"
+        account_number: "口座番号"
+      credit_card_pay_type:
+        cc_number: "カード番号"
+        expiration_date: "期限"
+      purchase_order_pay_type:
+        po_number: "注文番号"
+  number:
+    currency:
+      format:
+        unit: "￥"
+        precision: 0
+        separator: ","
+        format: "%u&nbsp;%n00"
   # activerecord:
   #   models:
   #     product:

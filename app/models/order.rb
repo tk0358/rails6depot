@@ -4,7 +4,7 @@ class Order < ApplicationRecord
   has_many :line_items, dependent: :destroy
   belongs_to :pay
   validates :name, :address, :email, presence: true
-  validates :pay_id, inclusion: { in: [1, 2, 3], message: "%{value} is invalid"}
+  validates :pay_id, inclusion: { in: [1, 2, 3] }
   validate :ship_date_must_be_after_created_at
 
   def add_line_items_from_cart(cart)

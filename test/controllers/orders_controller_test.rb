@@ -27,7 +27,7 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
       post orders_url, params: { order: { address: @order.address, email: @order.email, name: @order.name, pay_id: @order.pay_id } }
     end
 
-    assert_redirected_to store_index_url
+    assert_redirected_to store_index_url(locale: 'en')
   end
 
   test "should show order" do
@@ -51,5 +51,11 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to orders_url
+  end
+
+  test "cannnot access orders_path without login" do
+    logout
+    get products_url
+    assert_redirected_to login_url
   end
 end
