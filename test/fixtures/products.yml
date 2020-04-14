@@ -5,21 +5,25 @@ one:
   description: MyText
   image_url: lorem.jpg
   price: 9.99
+  locale: en
 
 two:
   title: MyString testing 2
   description: MyText
   image_url: lorem.jpg
   price: 9.99
+  locale: en
 
 ruby:
   title: Programming Ruby 1.9
   description: Ruby is the fastest grwoing and most exciting dynamic language out there. If you need to get working programs delivered fast, you should add Ruby to your toolbox.
   price: 49.50
   image_url: ruby.jpg
+  locale: es
 
 crystal:
   title: Programming Crystal
   description: Create High-Performance, Safe, Concurrent Apps Crystal is for Ruby programmers who want more performance or for developers who enjoy working in a high-level scripting environment.
   price: 40.00
   image_url: crystal.jpg
+  locale: en

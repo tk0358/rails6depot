@@ -39,7 +39,7 @@ class OrdersTest < ApplicationSystemTestCase
 
     assert_no_selector '#order_routing_number'
 
-    select 'Check', from: 'Pay type'
+    select I18n.t("orders.form.pay_types.check"), from: 'Pay with'
 
     assert_selector '#order_routing_number'
 
@@ -80,7 +80,7 @@ class OrdersTest < ApplicationSystemTestCase
 
     assert_no_selector '#order_routing_number'
 
-    select 'Credit card', from: 'Pay type'
+    select I18n.t("orders.form.pay_types.credit_card"), from: 'Pay with'
 
     assert_selector '#order_credit_card_number'
   end
@@ -98,7 +98,7 @@ class OrdersTest < ApplicationSystemTestCase
 
     assert_no_selector '#order_routing_number'
 
-    select 'Purchase order', from: 'Pay type'
+    select I18n.t("orders.form.pay_types.purchase_order"), from: 'Pay with'
 
     assert_selector '#order_po_number'
   end
@@ -134,7 +134,7 @@ class OrdersTest < ApplicationSystemTestCase
 
     assert_no_selector '#order_credit_card_number'
 
-    select 'Credit card', from: 'Pay type'
+    select I18n.t("orders.form.pay_types.credit_card"), from: 'Pay with'
 
     assert_selector '#order_credit_card_number'
 

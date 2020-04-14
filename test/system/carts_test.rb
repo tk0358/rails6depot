@@ -38,7 +38,7 @@ class CartsTest < ApplicationSystemTestCase
     assert_selector "h2", text: "Your Cart"
 
     page.accept_confirm 'Are you sure?' do
-      click_on "Empty cart"
+      click_on "Empty Cart"
     end
 
     assert_no_selector "h2", text: "Your Cart"

@@ -68,4 +68,9 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to login_url
   end
 
+  test "es locale products index view show only es products" do
+    get products_url(locale: 'es')
+    assert_select 'h1', 'Programming Ruby 1.9'
+  end
+
 end
