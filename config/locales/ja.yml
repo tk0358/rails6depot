@@ -40,6 +40,9 @@ ja:
     index:
       title_html: "あなたの本棚"
       add_html: "カートに追加"
+  products:
+    index:
+      products: "日本の商品"
   carts:
     cart:
       title: "あなたのカート"
