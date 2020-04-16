@@ -6,6 +6,19 @@ one:
   email: ruru_test@example.com
   pay_id: 1
 
+another_one:
+  name: Ruru Kaseda
+  address: Nagoya Catsle, Aichi, Japan
+  email: ruru_test@example.com
+  pay_id: 1
+  created_at: <%= 2.days.ago %>
+
+other_customer:
+  name: Chris Jones
+  address: 456 Somewhere Ln
+  email: chris@nowhere.net
+  pay_id: 1
+
 two:
   name: MyString
   address: MyText

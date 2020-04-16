@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   end
   resources :users
 
+  resources :support_requests, only: [:index, :update]
+
   scope '(:locale)' do
     resources :products do
       get :who_bought, on: :member
