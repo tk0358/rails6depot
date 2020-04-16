@@ -11,33 +11,35 @@
           <%= support_request.body %>
         </blockquote>
       </p>
-      <% if support_request.order %>
-        <h3>Recent Order</h3>
-        <dl>
-          <dt>Name</dt>
-          <dd><%= support_request.order.name %></dd>
+      <% if support_request.orders %>
+        <h3>Past Orders</h3>
+        <% support_request.orders.each do |order| %>
+          <dl>
+            <dt>Name</dt>
+            <dd><%= order.name %></dd>
 
-          <dt>Email</dt>
-          <dd><%= support_request.order.email %></dd>
+            <dt>Email</dt>
+            <dd><%= order.email %></dd>
 
-          <dt>Address</dt>
-          <dd><%= support_request.order.address %></dd>
+            <dt>Address</dt>
+            <dd><%= order.address %></dd>
 
-          <dt>PayType</dt>
-          <dd><%= support_request.order.pay.way %></dd>
+            <dt>PayType</dt>
+            <dd><%= order.pay.way %></dd>
 
-          <dt>Line Items</dt>
-          <dd>
-            <ul>
-              <% support_request.order.line_items.each do |line_item| %>
-                <li>
-                  <%= line_item.product.title %>
-                  (<%= line_item.product.price %>)
-                </li>
-              <% end %>
-            </ul>
-          </dd>
-        </dl>
+            <dt>Line Items</dt>
+            <dd>
+              <ul>
+                <% order.line_items.each do |line_item| %>
+                  <li>
+                    <%= line_item.product.title %>
+                    (<%= line_item.product.price %>)
+                  </li>
+                <% end %>
+              </ul>
+            </dd>
+          </dl>
+        <% end %>
       <% else %>
         <h3 class="notice">No associated order</h3>
       <% end %>
