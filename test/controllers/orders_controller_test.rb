@@ -23,11 +23,12 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create order" do
+    get store_index_url(locale: :en)
     assert_difference('Order.count') do
       post orders_url, params: { order: { address: @order.address, email: @order.email, name: @order.name, pay_id: @order.pay_id } }
     end
 
-    assert_redirected_to store_index_url(locale: 'en')
+    assert_redirected_to store_index_url(locale: :en)
   end
 
   test "should show order" do

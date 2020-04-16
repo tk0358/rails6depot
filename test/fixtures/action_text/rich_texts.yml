@@ -2,3 +2,12 @@
 #   record: name_of_fixture (ClassOfFixture)
 #   name: content
 #   body: <p>In a <i>million</i> stars!</p>
+one:
+  record: ruby(Product)
+  name: description
+  body: Ruby is the fastest grwoing and most exciting dynamic language out there. If you need to get working programs delivered fast, you should add Ruby to your toolbox.
+
+two:
+  record: crystal(Product)
+  name: description
+  body: Create High-Performance, Safe, Concurrent Apps Crystal is for Ruby programmers who want more performance or for developers who enjoy working in a high-level scripting environment.

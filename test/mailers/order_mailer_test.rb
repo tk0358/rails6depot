@@ -15,7 +15,7 @@ class OrderMailerTest < ActionMailer::TestCase
     assert_equal "Pragmatic Store Order Confirmation", mail.subject
     assert_equal ["ruru_test@example.com"], mail.to
     assert_equal ["ruru@example.com"], mail.from
-    assert_match /<td[^>]*>1<\/td>\s*<td>Programming Ruby 1.9<\/td>/, mail.body.encoded
+    assert_match /Programming Ruby 1.9/, mail.body.encoded
   end
 
 end

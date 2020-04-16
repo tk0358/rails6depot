@@ -25,7 +25,7 @@
           <% end %>
           <h2><%= product.title %></h2>
           <p>
-            <%= sanitize(product.description) %>
+            <%= product.description %>
           </p>
           <div class="price">
             <%= number_to_currency(calculate_locale_price(I18n.locale, product.price)) %>
