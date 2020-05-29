@@ -8,7 +8,7 @@
     float: right;
   }
   ul.catalog {
-    border-top: solid 0.250em;
+    border-top: solid 0.25em gray(50%);
     list-style: none;
     padding: 0;
     margin: 0;
@@ -35,12 +35,13 @@
         padding: 1em;
         margin-right: 1em;
         margin-bottom: 1em;
-        box-shadow: 0.176em 0.176em 0.354em 0px rgba(0,0,0,.75);
+        box-shadow: 0.176em 0.176em 0.354em 0px rgba(0, 0, 0, 0.75);
       }
       .price {
         font-size: 1.414em;
       }
-      form, div {
+      form,
+      div {
         display: inline;
       }
       input[type="submit"] {
@@ -60,12 +61,10 @@
 
 @keyframes product-highlight {
   0% {
-      background: #A5FF14;
+    background: #a5ff14;
   }
 
   100% {
-      background: none;
+    background: none;
   }
 }
-
-

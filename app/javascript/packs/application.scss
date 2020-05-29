@@ -12,7 +12,7 @@
  *
  *= require_tree .
  *= require_self
- */
+*/
 
 body {
   margin: 0;
@@ -218,3 +218,18 @@ nav.logged_in_nav {
   float: right;
   margin: 1em;
 }
+.test {
+  margin: 1em;
+  color: white;
+}
+
+@import "css/actiontext.scss";
+@import "css/sessions.scss";
+@import "css/users.scss";
+@import "css/scaffolds.scss";
+@import "css/line_items.scss";
+@import "css/carts.scss";
+@import "css/products.scss";
+@import "css/orders.scss";
+@import "css/store.scss";
+@import "css/admin.scss";
