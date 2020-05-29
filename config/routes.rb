@@ -9,8 +9,12 @@ Rails.application.routes.draw do
 
   resources :support_requests, only: [:index, :update]
 
+  concern :reviewable do
+    resources :reviews
+  end
+
   scope '(:locale)' do
-    resources :products do
+    resources :products, concern: :reviewable do
       get :who_bought, on: :member
     end
     resources :orders do
